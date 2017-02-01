@@ -6,6 +6,11 @@
             android:title="print"
             app:showAsAction="always">
         </item>
+        <item android:id="@+id/newsheet"
+            android:icon="@drawable/newsheet"
+            android:title="print"
+            app:showAsAction="always">
+        </item>
 
 </menu>
 

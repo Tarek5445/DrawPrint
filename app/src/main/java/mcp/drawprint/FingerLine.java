@@ -7,12 +7,13 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
 public class FingerLine extends View {
     private final Paint mPaint;
-    int[][] sX=new int[200][4];  //Each row save the stating and the ending points of one line
+    ArrayList<int[]> sX = new ArrayList<>();
     String myString;
     private float startX;
     private float startY;
@@ -35,9 +36,13 @@ public class FingerLine extends View {
 
     }
 
+    public void eraseAll() {
+        mCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+        invalidate();
+    }
 
     public String tostring() {
-        String myString = Arrays.deepToString(sX);
+        //String myString = Arrays.deepToString(sX);
         return myString;
     }
 
@@ -73,12 +78,14 @@ public class FingerLine extends View {
             case MotionEvent.ACTION_UP:
                 endX = event.getX();
                 endY = event.getY();
-                sX[i][0]=(int)startX;
-                sX[i][1]=(int)startY;
-                sX[i][2]=(int)endX;
-                sX[i][3]=(int)endY;
-                i++;
+                int[] temp = new int[4];
+                temp[0]=(int)startX;
+                temp[1]=(int)startY;
+                temp[2]=(int)endX;
+                temp[3]=(int)endY;
+                sX.add(temp);
                 mCanvas.drawLine(startX, startY, endX, endY, mPaint);
+               // mCanvas.drawRect(startX, startY, endX, endY, mPaint);
                 invalidate();
 
 

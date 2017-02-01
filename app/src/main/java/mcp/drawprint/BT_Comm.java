@@ -19,7 +19,7 @@ public class BT_Comm {
     final String nxt1 = "00:16:53:07:AA:F6";
 
     BluetoothAdapter localAdapter;
-    BluetoothSocket socket_nxt1, socket_nxt2;
+    BluetoothSocket socket_nxt1;
     boolean success = false;
 
     // Enables Bluetooth if not enabled
@@ -32,7 +32,6 @@ public class BT_Comm {
         }
     }
 
-    // Connect to both NXTs
     public boolean connectToNXTs() {
 
         // Get the BluetoothDevice of the NXT
